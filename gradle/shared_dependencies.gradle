@@ -1,0 +1,149 @@
+ext {
+    versions = [
+            android_gradle = '7.0.4',
+            kotlin = '1.7.2',
+            nav = "2.3.5",
+            core_ktx = '1.7.0',
+            app_compat = '1.4.0',
+            constraint_layout = '2.1.2',
+            fragment_androidx = '1.3.2',
+            junit_version = '4.13.2',
+            test_runner_version = '1.0.2',
+            junit_ext_version = '1.1.2',
+            espresso_version = '3.3.0',
+            roboelectric_version = '4.5-alpha-3',
+            material_design = '1.3.0',
+            lifecycle = '2.4.0',
+            retrofit = '2.9.0',
+            gson_version = '2.8.6',
+            okhttp = '4.9.1',
+            rxjava = '3.0.0',
+            paging_version = "3.0.1",
+            glide = '4.12.0',
+            timber_version = '4.7.1',
+            google_services = '4.3.10',
+            google_api_version = '1.31.5',
+            leakcanary_version = '2.7',
+            truth_version = '1.1.3',
+            mockito_version = '1.12.2',
+            groupie_version = '2.10.0',
+            hilt_version = '2.40.5',
+            couroutines_version = '1.6.0',
+            material_design = '1.7.0',
+            core_arch_test_version = '2.1.0'
+    ]
+
+    core = [
+            coreKtx    : "androidx.core:core-ktx:$core_ktx",
+            couroutines: "org.jetbrains.kotlinx:kotlinx-coroutines-android:$couroutines_version"
+    ]
+
+    coreUi = [
+            appCompat       : "androidx.appcompat:appcompat:$app_compat",
+            constraintLayout: "androidx.constraintlayout:constraintlayout:$constraint_layout",
+            androidxFragment: "androidx.fragment:fragment:$fragment_androidx"
+    ]
+
+    testing = [
+            junit           : "junit:junit:$junit_version",
+            junitExt        : "androidx.test.ext:junit:$junit_ext_version",
+            couroutinesTest : "org.jetbrains.kotlinx:kotlinx-coroutines-test:$couroutines_version",
+            coreTest        : "androidx.arch.core:core-testing:$core_arch_test_version",
+            truth           : "com.google.truth:truth:$truth_version",
+            roboelectric    : "org.robolectric:robolectric:$roboelectric_version",
+            mockito         : "io.mockk:mockk:$mockito_version",
+            coroutines      : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$couroutines_version"
+    ]
+
+    androidTesting = [
+            testRunner: "com.android.support.test:runner:$test_runner_version",
+            espresso  : "androidx.test.espresso:espresso-core:$espresso_version"
+    ]
+
+    architectureComponents = [
+            viewmodelKtx        : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle",
+            livedataKtx         : "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle",
+            runtimeKtx          : "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle",
+            lifecycleCommonJava8: "androidx.lifecycle:lifecycle-common-java8:$lifecycle",
+    ]
+
+    architectureComponentsKapt = [
+            lifecycleCompiler: "androidx.lifecycle:lifecycle-compiler:$lifecycle"
+    ]
+
+    navigationComponent = [
+            navigationFragmentKtx: "androidx.navigation:navigation-fragment-ktx:$nav",
+            navigationUiKtx      : "androidx.navigation:navigation-ui-ktx:$nav",
+            navigationTesting    : "androidx.navigation:navigation-testing:$nav",
+    ]
+
+    retrofit = [
+            retrofit      : "com.squareup.retrofit2:retrofit:$retrofit",
+            converterGson : "com.squareup.retrofit2:converter-gson:$retrofit",
+            adapterRxJava3: "com.squareup.retrofit2:adapter-rxjava3:$retrofit"
+    ]
+
+    okHttp = [
+            client            : "com.squareup.okhttp3:okhttp:$okhttp",
+            loggingInterceptor: "com.squareup.okhttp3:logging-interceptor:$okhttp"
+    ]
+
+    glide = [
+            glide        : "com.github.bumptech.glide:glide:$glide",
+            glideCompiler: "com.github.bumptech.glide:compiler:$glide"
+    ]
+
+    paging = [
+            paging       : "androidx.paging:paging-common:$paging_version",
+            pagingRuntime: "androidx.paging:paging-runtime-ktx:$paging_version",
+            rxJavaPaging : "androidx.paging:paging-rxjava3:$rxjava"
+    ]
+
+    leakCanary = [
+            leakCanary: "com.squareup.leakcanary:leakcanary-android:$leakcanary_version"
+    ]
+
+    mockito = [
+            mockito: "org.mockito:mockito-core:$mockito_version"
+    ]
+
+    timber = [
+            timber: "com.jakewharton.timber:timber:$timber_version"
+    ]
+
+    gson = [
+            gson: "com.google.code.gson:gson:$gson_version"
+    ]
+
+    groupie = [
+            groupie    : "com.github.lisawray.groupie:groupie:$groupie_version",
+            viewBinding: "com.github.lisawray.groupie:groupie-viewbinding:$groupie_version"
+    ]
+
+    retrofitOkHttpGsonPack = [
+            retrofit.values(),
+            gson.values(),
+            okHttp.values()
+    ]
+
+    materialDesign = [
+            materialDesign: "com.google.android.material:material:$material_design"
+    ]
+
+    firebase = [
+            firebaseBoM: "com.google.firebase:firebase-bom:$firebase_bom_version",
+            analytics  : 'com.google.firebase:firebase-analytics-ktx',
+            crashlytics: 'com.google.firebase:firebase-crashlytics-ktx',
+            //Uncomment if needed remoteConfig : 'com.google.firebase:firebase-config-ktx',
+    ]
+
+    sentry = "io.sentry:sentry-android:$sentry"
+
+    redbeePlayer = [
+            core             : "com.github.EricssonBroadcastServices.EnigmaRiverAndroid:core:$redbee",
+            exoplayer        : "com.github.EricssonBroadcastServices.EnigmaRiverAndroid:exoplayerintegration:$redbee",
+            exposureUtil     : "com.github.EricssonBroadcastServices.EnigmaRiverAndroid:exposureUtils:$redbee",
+            download         : "com.github.EricssonBroadcastServices.EnigmaRiverAndroid:download:$redbee",
+            exoPlayerDownload: "com.github.EricssonBroadcastServices.EnigmaRiverAndroid:exoPlayerDownload:$redbee",
+    ]
+}
