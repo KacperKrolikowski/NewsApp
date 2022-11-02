@@ -2,14 +2,18 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/navigation_home">
 
     <fragment
-        android:id="@+id/homeFragment"
+        android:id="@+id/navigation_home"
         android:name="com.krolikowski.newsapp.ui.home.HomeFragment"
-        android:label="HomeFragment" />
+        android:label="@string/title_tab_home" />
     <fragment
-        android:id="@+id/searchFragment"
+        android:id="@+id/navigation_search"
         android:name="com.krolikowski.newsapp.ui.search.SearchFragment"
-        android:label="SearchFragment" />
+        android:label="@string/title_tab_search" />
+    <fragment
+        android:id="@+id/navigation_favourites"
+        android:name="com.krolikowski.newsapp.ui.favourites.FavouritesFragment"
+        android:label="@string/title_tab_favourites" />
 </navigation>

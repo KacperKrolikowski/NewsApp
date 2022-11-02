@@ -3,7 +3,9 @@ package com.krolikowski.newsapp.ui.search
 import androidx.fragment.app.viewModels
 import com.krolikowski.newsapp.base.BaseFragment
 import com.krolikowski.newsapp.databinding.FragmentSearchBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewState, SearchViewEvent, SearchViewModel>(
     FragmentSearchBinding::inflate
 ) {
