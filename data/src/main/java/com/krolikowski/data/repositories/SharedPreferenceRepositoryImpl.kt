@@ -16,7 +16,7 @@ class SharedPreferenceRepositoryImpl constructor(
     }
 
     override var appLanguageCode: String
-        get() = getValue(KEY_APP_LANGUAGE_CODE, Locale.ENGLISH.displayLanguage)
+        get() = getValue(KEY_APP_LANGUAGE_CODE, "us")
         set(value) {
             setValue(KEY_APP_LANGUAGE_CODE, value)
         }
