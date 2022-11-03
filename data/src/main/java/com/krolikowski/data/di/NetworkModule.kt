@@ -1,11 +1,15 @@
 package com.krolikowski.data.di
 
+import android.content.Context
 import com.krolikowski.data.BuildConfig
 import com.krolikowski.data.NewsAPI
+import com.krolikowski.data.utils.HttpCacheInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -20,6 +24,20 @@ class NetworkModule {
 
     @Singleton
     @Provides
+    fun provideHttpCache(@ApplicationContext context: Context) = Cache(
+        directory = context.cacheDir,
+        maxSize = CACHE_SIZE
+    )
+
+    @Singleton
+    @Provides
+    fun provideHttpCacheInterceptor() = HttpCacheInterceptor(
+        cacheValidityTime = CACHE_VALIDITY_TIME_MINUTES,
+        validityTimeUnit = TimeUnit.MINUTES
+    )
+
+    @Singleton
+    @Provides
     fun provideLoggingInterceptor(): HttpLoggingInterceptor =
         HttpLoggingInterceptor().apply {
             level =
@@ -29,11 +47,17 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideDefaultOkHttpClient(loggingInterceptor: HttpLoggingInterceptor): OkHttpClient =
+    fun provideDefaultOkHttpClient(
+        loggingInterceptor: HttpLoggingInterceptor,
+        cacheInterceptor: HttpCacheInterceptor,
+        cache: Cache
+    ): OkHttpClient =
         OkHttpClient.Builder()
+            .cache(cache)
             .addInterceptor(loggingInterceptor)
             .connectTimeout(CONNECTION_TIMEOUT_MS, TimeUnit.MILLISECONDS)
             .readTimeout(READ_TIMEOUT_MS, TimeUnit.MILLISECONDS)
+            .addNetworkInterceptor(cacheInterceptor)
             .build()
 
     @Singleton
@@ -66,5 +90,8 @@ class NetworkModule {
         const val NEWS_API_URL = "https://newsapi.org/"
         const val CONNECTION_TIMEOUT_MS = 15000L
         const val READ_TIMEOUT_MS = 15000L
+
+        const val CACHE_SIZE = 30 * 1024 * 1024L
+        const val CACHE_VALIDITY_TIME_MINUTES = 60
     }
 }

@@ -7,7 +7,7 @@ import timber.log.Timber
 
 abstract class BaseViewModel<VE : BaseViewEvent, VS : BaseViewState> : ViewModel() {
 
-    private val mutableViewState = MutableLiveData<VS>()
+    protected val mutableViewState = MutableLiveData<VS>()
     val viewState: LiveData<VS> = mutableViewState
 
     abstract fun onViewEvent(viewEvent: VE)
