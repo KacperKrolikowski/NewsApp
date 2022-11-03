@@ -9,6 +9,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.krolikowski.newsapp.R
 import com.krolikowski.newsapp.base.BaseActivity
 import com.krolikowski.newsapp.databinding.ActivityMainBinding
+import com.krolikowski.newsapp.ui.offlineactivity.OfflineActivity
+import com.krolikowski.newsapp.utils.extensions.navigateTo
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -23,7 +25,9 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewState, MainViewEv
     }
 
     override fun handleViewState(viewState: MainViewState) {
-        TODO("Not yet implemented")
+        when (viewState) {
+            is MainViewState.NavigateToOffline -> navigateTo<OfflineActivity>()
+        }
     }
 
     private fun setNavigation(){

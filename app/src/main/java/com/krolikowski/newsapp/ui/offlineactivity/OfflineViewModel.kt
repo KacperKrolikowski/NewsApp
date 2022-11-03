@@ -1,4 +1,4 @@
-package com.krolikowski.newsapp.ui.main
+package com.krolikowski.newsapp.ui.offlineactivity
 
 import androidx.lifecycle.viewModelScope
 import com.krolikowski.newsapp.base.BaseViewModel
@@ -9,21 +9,20 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor(
+class OfflineViewModel @Inject constructor(
     private val connectivityHelper: ConnectivityHelper
-) : BaseViewModel<MainViewEvent, MainViewState>() {
-
+) : BaseViewModel<OfflineViewEvent, OfflineViewState>() {
     init {
         listenOnConnectionChange()
     }
 
-    override fun onViewEvent(viewEvent: MainViewEvent) {}
+    override fun onViewEvent(viewEvent: OfflineViewEvent) {}
 
     private fun listenOnConnectionChange() {
         viewModelScope.launch {
             connectivityHelper.connectionState.collectLatest {
-                if (it == ConnectivityHelper.ConnectivityState.NOT_CONNECTED) {
-                    mutableViewState.postValue(MainViewState.NavigateToOffline)
+                if (it == ConnectivityHelper.ConnectivityState.CONNECTED) {
+                    mutableViewState.postValue(OfflineViewState.GoBackToOnline)
                 }
             }
         }
