@@ -40,7 +40,8 @@ class HomeViewModel @Inject constructor(
                                 news.author,
                                 news.description,
                                 news.webUrl,
-                                news.imageUrl
+                                news.imageUrl,
+                                news.date
                             )
                         })
                     )

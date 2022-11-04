@@ -27,6 +27,7 @@ data class ArticleResponse(
         author = this.author ?: "",
         description = this.description ?: "",
         webUrl = this.url,
-        imageUrl = this.urlToImage ?: ""
+        imageUrl = this.urlToImage ?: "",
+        date = this.publishedAt
     )
 }

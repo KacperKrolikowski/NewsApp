@@ -13,5 +13,5 @@
     <dimen name="text_size_xxl">18sp</dimen>
 
     <dimen name="item_height">200dp</dimen>
-    <dimen name="item_corner_radius">4dp</dimen>
+    <dimen name="item_corner_radius">6dp</dimen>
 </resources>

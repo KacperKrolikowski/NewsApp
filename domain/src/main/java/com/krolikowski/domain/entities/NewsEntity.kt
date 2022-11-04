@@ -5,5 +5,6 @@ data class NewsEntity(
      val author: String,
      val description: String,
      val webUrl: String,
-     val imageUrl: String
+     val imageUrl: String,
+     val date: String
 )
