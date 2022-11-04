@@ -5,4 +5,13 @@
     <dimen name="margin_l">16dp</dimen>
     <dimen name="margin_xl">32dp</dimen>
     <dimen name="margin_xxl">64dp</dimen>
+
+    <dimen name="text_size_s">10sp</dimen>
+    <dimen name="text_size_m">12sp</dimen>
+    <dimen name="text_size_l">14sp</dimen>
+    <dimen name="text_size_xl">16sp</dimen>
+    <dimen name="text_size_xxl">18sp</dimen>
+
+    <dimen name="item_height">200dp</dimen>
+    <dimen name="item_corner_radius">4dp</dimen>
 </resources>
