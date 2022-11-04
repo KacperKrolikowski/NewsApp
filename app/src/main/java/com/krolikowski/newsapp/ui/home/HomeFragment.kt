@@ -3,8 +3,10 @@ package com.krolikowski.newsapp.ui.home
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.krolikowski.newsapp.R
 import com.krolikowski.newsapp.base.BaseFragment
 import com.krolikowski.newsapp.databinding.FragmentHomeBinding
 import com.krolikowski.newsapp.ui.groupie.items.NewsItem
@@ -40,6 +42,7 @@ class HomeFragment: BaseFragment<FragmentHomeBinding, HomeViewState, HomeViewEve
         when (viewState) {
             HomeViewState.Loading -> setLoadingState()
             is HomeViewState.Success -> setContent(viewState.newsList)
+            HomeViewState.Error -> showErrorMessage()
         }
     }
 
@@ -72,5 +75,9 @@ class HomeFragment: BaseFragment<FragmentHomeBinding, HomeViewState, HomeViewEve
                 super.setOrientation(VERTICAL)
             }
         }
+    }
+
+    private fun showErrorMessage() {
+        Toast.makeText(context, getString(R.string.generic_error), Toast.LENGTH_SHORT).show()
     }
 }

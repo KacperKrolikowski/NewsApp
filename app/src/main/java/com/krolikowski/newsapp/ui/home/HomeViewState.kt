@@ -9,4 +9,5 @@ sealed class HomeViewState : BaseViewState {
     ) : HomeViewState()
 
     object Loading : HomeViewState()
+    object Error : HomeViewState()
 }

@@ -17,4 +17,14 @@ class NewsRepositoryImpl(
             it.toEntity()
         }
     }
+
+    override suspend fun getNewsByQuery(query: String, pageIndex: Int): NewsListEntity {
+        val topNewsResult = api.getNewsByQuery(
+            country = sharedPreferencesRepository.appLanguageCode,
+            pageNumber = pageIndex,
+            query = query
+        )
+
+        return topNewsResult.toEntity()
+    }
 }
