@@ -6,6 +6,7 @@ import com.krolikowski.newsapp.base.BaseViewModel
 import com.krolikowski.newsapp.ui.groupie.items.NewsItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -47,8 +48,13 @@ class HomeViewModel @Inject constructor(
                     )
                 }
                 .onFailure {
-
+                    postErrorState(it)
                 }
         }
+    }
+
+    private fun postErrorState(throwable: Throwable) {
+        Timber.e(throwable)
+        mutableViewState.postValue(HomeViewState.Error)
     }
 }

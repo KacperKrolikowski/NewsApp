@@ -4,4 +4,6 @@
     <string name="title_tab_search">Search</string>
     <string name="title_tab_more">More</string>
     <string name="title_tab_favourites">Favourites</string>
+
+    <string name="generic_error">Something went wrong</string>
 </resources>
