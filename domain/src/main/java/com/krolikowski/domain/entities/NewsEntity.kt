@@ -1,10 +1,10 @@
 package com.krolikowski.domain.entities
 
 data class NewsEntity(
-    private val title: String,
-    private val author: String,
-    private val content: String,
-    private val description: String,
-    private val webUrl: String,
-    private val imageUrl: String
+     val title: String,
+     val author: String,
+     val description: String,
+     val webUrl: String,
+     val imageUrl: String,
+     val date: String
 )

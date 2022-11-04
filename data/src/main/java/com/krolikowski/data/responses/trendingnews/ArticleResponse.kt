@@ -25,9 +25,9 @@ data class ArticleResponse(
     fun toEntity() = NewsEntity(
         title = this.title,
         author = this.author ?: "",
-        content = this.content,
         description = this.description ?: "",
         webUrl = this.url,
-        imageUrl = this.urlToImage ?: ""
+        imageUrl = this.urlToImage ?: "",
+        date = this.publishedAt
     )
 }
