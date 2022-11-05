@@ -13,7 +13,7 @@
         android:name="com.krolikowski.newsapp.ui.search.SearchFragment"
         android:label="@string/title_tab_search" />
     <fragment
-        android:id="@+id/navigation_favourites"
-        android:name="com.krolikowski.newsapp.ui.favourites.FavouritesFragment"
-        android:label="@string/title_tab_favourites" />
+        android:id="@+id/navigation_saved"
+        android:name="com.krolikowski.newsapp.ui.saved.SavedFragment"
+        android:label="@string/title_tab_saved" />
 </navigation>

@@ -36,7 +36,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewState, MainViewEv
         navView.setupWithNavController(navController)
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.navigation_home, R.id.navigation_search, R.id.navigation_favourites, -> {
+                R.id.navigation_home, R.id.navigation_search, R.id.navigation_saved -> {
                     navView.isVisible = true
                 }
                 else -> navView.isVisible = false
