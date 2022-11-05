@@ -9,10 +9,11 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
+import com.krolikowski.newsapp.R
 
 fun ImageView.loadFromUrl(
     url: String?,
-    placeholder: Int? = null,
+    placeholder: Int? = R.raw.placeholder,
     diskCacheStrategy: DiskCacheStrategy = DiskCacheStrategy.AUTOMATIC,
     loadCircularImage: Boolean = false,
     doOnError: (() -> Unit)? = null,
@@ -22,7 +23,7 @@ fun ImageView.loadFromUrl(
         .load(url)
         .run {
             placeholder?.let {
-                placeholder(placeholder)
+                placeholder(it)
             } ?: this
         }
         .diskCacheStrategy(diskCacheStrategy)

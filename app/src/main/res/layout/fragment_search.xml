@@ -10,16 +10,14 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_xxl"
-        android:layout_marginBottom="643dp"
         app:boxBackgroundColor="@color/white"
         app:boxStrokeColor="@color/transparent"
         app:endIconDrawable="@drawable/ic_clear_text"
         app:endIconMode="clear_text"
         app:hintAnimationEnabled="false"
         app:hintEnabled="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/recycler_view"
+        android:layout_margin="@dimen/margin_m"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -36,20 +34,20 @@
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="@dimen/margin_m"
         android:orientation="vertical"
+        android:layout_marginTop="@dimen/margin_m"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/search_text_field" />
 
     <com.google.android.material.progressindicator.CircularProgressIndicator
         android:id="@+id/loading_state"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:indeterminate="true"
-        app:indicatorColor="@android:color/white"
+        app:indicatorColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

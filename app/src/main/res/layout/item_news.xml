@@ -21,6 +21,7 @@
             android:layout_marginTop="@dimen/margin_m"
             android:padding="@dimen/margin_s"
             android:layout_marginStart="@dimen/margin_s"
+            android:maxLines="3"
             android:ellipsize="end"
             android:textSize="@dimen/text_size_l"
             android:textStyle="bold"

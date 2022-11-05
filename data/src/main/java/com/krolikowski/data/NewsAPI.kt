@@ -15,7 +15,6 @@ interface NewsAPI {
 
     @GET("v2/everything")
     suspend fun getNewsByQuery(
-        @Query(QUERY_COUNTRY) country: String,
         @Query(QUERY_SEARCH) query: String,
         @Query(QUERY_API_KEY) apiKey: String = QUERY_API_KEY_VALUE,
         @Query(QUERY_PAGE_NUMBER) pageNumber: Int
