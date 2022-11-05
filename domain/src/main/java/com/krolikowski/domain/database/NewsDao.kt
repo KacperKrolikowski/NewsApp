@@ -19,4 +19,7 @@ interface NewsDao {
 
     @Query("SELECT * from news")
     suspend fun getSavedNews(): List<NewsDatabaseEntity>
+
+    @Query("SELECT * from news WHERE :webUrl = newsUrl")
+    suspend fun checkIsSaved(webUrl: String): NewsDatabaseEntity?
 }

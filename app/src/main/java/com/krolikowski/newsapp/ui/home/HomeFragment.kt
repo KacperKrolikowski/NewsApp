@@ -34,7 +34,7 @@ class HomeFragment: BaseFragment<FragmentHomeBinding, HomeViewState, HomeViewEve
             adapter = contentAdapter
         }
         contentAdapter.setOnItemClickDebounce { item, _ ->
-            if (item is NewsItem) item.webUrl.let(::navigateToWebView)
+            if (item is NewsItem) item.news.webUrl.let(::navigateToWebView)
         }
     }
 

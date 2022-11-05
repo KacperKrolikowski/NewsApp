@@ -1,6 +1,6 @@
 package com.krolikowski.data
 
-import com.krolikowski.data.responses.trendingnews.NewsListResponse
+import com.krolikowski.data.responses.news.NewsListResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
