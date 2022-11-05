@@ -1,7 +1,10 @@
 package com.krolikowski.newsapp.ui.home
 
 import androidx.lifecycle.viewModelScope
+import com.krolikowski.domain.usecases.CheckIsNewsSavedUseCase
+import com.krolikowski.domain.usecases.DeleteSavedNewsUseCase
 import com.krolikowski.domain.usecases.GetTopNewsUseCase
+import com.krolikowski.domain.usecases.SaveNewsUseCase
 import com.krolikowski.newsapp.base.BaseViewModel
 import com.krolikowski.newsapp.ui.groupie.items.NewsItem
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -11,7 +14,10 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val getTopNewsUseCase: GetTopNewsUseCase
+    private val getTopNewsUseCase: GetTopNewsUseCase,
+    private val checkIsNewsSavedUseCase: CheckIsNewsSavedUseCase,
+    private val saveNewsUseCase: SaveNewsUseCase,
+    private val deleteSavedNewsUseCase: DeleteSavedNewsUseCase
 ) : BaseViewModel<HomeViewEvent, HomeViewState>() {
 
     init {
@@ -37,12 +43,11 @@ class HomeViewModel @Inject constructor(
                     mutableViewState.postValue(
                         HomeViewState.Success(it.newsList.map { news ->
                             NewsItem(
-                                news.title,
-                                news.author,
-                                news.description,
-                                news.webUrl,
-                                news.imageUrl,
-                                news.date
+                                news,
+                                viewModelScope,
+                                checkIsNewsSavedUseCase,
+                                saveNewsUseCase,
+                                deleteSavedNewsUseCase
                             )
                         })
                     )

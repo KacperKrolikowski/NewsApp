@@ -1,4 +1,4 @@
-package com.krolikowski.data.responses.trendingnews
+package com.krolikowski.data.responses.news
 
 
 import com.google.gson.annotations.SerializedName

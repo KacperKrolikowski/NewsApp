@@ -3,9 +3,14 @@ package com.krolikowski.newsapp.ui.search
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
+import androidx.paging.map
 import com.krolikowski.domain.entities.NewsEntity
+import com.krolikowski.domain.usecases.CheckIsNewsSavedUseCase
+import com.krolikowski.domain.usecases.DeleteSavedNewsUseCase
 import com.krolikowski.domain.usecases.GetNewsByQueryUseCase
+import com.krolikowski.domain.usecases.SaveNewsUseCase
 import com.krolikowski.newsapp.base.BaseViewModel
+import com.krolikowski.newsapp.ui.groupie.items.NewsItem
 import com.krolikowski.newsapp.ui.search.SearchFragment.Companion.MINIMAL_QUERY_LENGTH
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
@@ -18,7 +23,10 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SearchViewModel @Inject constructor(
-    private val getNewsByQueryUseCase: GetNewsByQueryUseCase
+    private val getNewsByQueryUseCase: GetNewsByQueryUseCase,
+    private val checkIsNewsSavedUseCase: CheckIsNewsSavedUseCase,
+    private val saveNewsUseCase: SaveNewsUseCase,
+    private val deleteSavedNewsUseCase: DeleteSavedNewsUseCase
 ) : BaseViewModel<SearchViewEvent, SearchViewState>() {
     private var searchJob: Job? = null
     private var genresJob: Job? = null
@@ -57,7 +65,15 @@ class SearchViewModel @Inject constructor(
             }.collectLatest { paging ->
                 mutableViewState.postValue(
                     SearchViewState.Success(
-                        paging
+                        paging.map { news ->
+                            NewsItem(
+                                news,
+                                viewModelScope,
+                                checkIsNewsSavedUseCase,
+                                saveNewsUseCase,
+                                deleteSavedNewsUseCase
+                            )
+                        }
                     )
                 )
             }

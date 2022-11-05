@@ -21,7 +21,7 @@ import com.krolikowski.domain.entities.NewsEntity
 import com.krolikowski.newsapp.R
 import com.krolikowski.newsapp.base.BaseFragment
 import com.krolikowski.newsapp.databinding.FragmentSearchBinding
-import com.krolikowski.newsapp.ui.home.NewsListAdapter
+import com.krolikowski.newsapp.ui.groupie.items.NewsItem
 import com.krolikowski.newsapp.utils.extensions.hideSoftKeyboard
 import com.krolikowski.newsapp.utils.views.ClearFocusEditText
 import dagger.hilt.android.AndroidEntryPoint
@@ -105,7 +105,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewState, Sear
     }
 
     private fun handleSuccessState(
-        news: PagingData<NewsEntity>
+        news: PagingData<NewsItem>
     ) {
         viewLifecycleOwner.lifecycleScope.launch {
             pagingAdapter.submitData(news)
