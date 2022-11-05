@@ -47,7 +47,8 @@ class HomeViewModel @Inject constructor(
                                 viewModelScope,
                                 checkIsNewsSavedUseCase,
                                 saveNewsUseCase,
-                                deleteSavedNewsUseCase
+                                deleteSavedNewsUseCase,
+                                null
                             )
                         })
                     )

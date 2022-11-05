@@ -22,7 +22,8 @@ data class NewsItem(
     val lifecycleScope: CoroutineScope,
     val checkIsNewsSavedUseCase: CheckIsNewsSavedUseCase,
     val saveNewsUseCase: SaveNewsUseCase,
-    val deleteSavedNewsUseCase: DeleteSavedNewsUseCase
+    val deleteSavedNewsUseCase: DeleteSavedNewsUseCase,
+    val updateOnItemDelete: (() -> Unit)? = null
 ) : BindableItem<ItemNewsBinding>() {
 
     override fun getLayout() = R.layout.item_news
@@ -46,6 +47,7 @@ data class NewsItem(
                             if (checkIsNewsSavedUseCase.execute(webUrl)) {
                                 updateState(false)
                                 deleteSavedNewsUseCase.execute(news)
+                                updateOnItemDelete?.let { it() }
                             } else {
                                 updateState(true)
                                 saveNewsUseCase.execute(news)

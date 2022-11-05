@@ -3,11 +3,12 @@
     <string name="title_tab_home">Home</string>
     <string name="title_tab_search">Search</string>
     <string name="title_tab_more">More</string>
-    <string name="title_tab_favourites">Favourites</string>
+    <string name="title_tab_saved">Saved</string>
 
     <string name="generic_error">Something went wrong</string>
 
     <string name="search">Search</string>
     <string name="offline_text">It seems you do not have internet connection</string>
     <string name="no_search_results">No results for selected query</string>
+    <string name="no_saved">You need to save articles firstly</string>
 </resources>

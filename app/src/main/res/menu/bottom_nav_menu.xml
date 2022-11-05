@@ -11,7 +11,7 @@
         android:title="@string/title_tab_search" />
 
     <item
-        android:id="@+id/navigation_favourites"
+        android:id="@+id/navigation_saved"
         android:icon="@drawable/ic_bookmark_added"
-        android:title="@string/title_tab_favourites" />
+        android:title="@string/title_tab_saved" />
 </menu>
