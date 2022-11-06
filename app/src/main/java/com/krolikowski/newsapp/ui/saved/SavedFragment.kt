@@ -1,7 +1,6 @@
 package com.krolikowski.newsapp.ui.saved
 
 import android.os.Bundle
-import android.os.Parcelable
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels

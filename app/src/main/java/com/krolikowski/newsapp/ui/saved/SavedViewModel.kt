@@ -34,37 +34,11 @@ class SavedViewModel @Inject constructor(
                         viewModelScope,
                         checkIsNewsSavedUseCase,
                         saveNewsUseCase,
-                        deleteSavedNewsUseCase,
-                        { updateSavedList() }
-                    )
+                        deleteSavedNewsUseCase
+                    ) { getSaved() }
                 }))
             }
         }
-    }
-
-    private fun updateSavedList() {
-        viewModelScope.launch {
-            postUpdatedList(getSavedNewsUseCase.execute().map { news ->
-                NewsItem(
-                    news,
-                    viewModelScope,
-                    checkIsNewsSavedUseCase,
-                    saveNewsUseCase,
-                    deleteSavedNewsUseCase,
-                    { updateSavedList() }
-                )
-            })
-        }
-    }
-
-    private fun postUpdatedList(updatedList: List<NewsItem>) {
-        mutableViewState.postValue(SavedViewState.Success((viewState.value as? SavedViewState.Success)?.let { successViewState ->
-            updatedList.mapIndexed { index, item ->
-                successViewState.newsList.getOrNull(index)
-                    ?.takeIf { it.isSameAs(item) }
-                    ?: item
-            }
-        } ?: updatedList))
     }
 
     private fun postLoadingState() {
