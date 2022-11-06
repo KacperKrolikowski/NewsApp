@@ -34,9 +34,8 @@ class SavedViewModel @Inject constructor(
                         viewModelScope,
                         checkIsNewsSavedUseCase,
                         saveNewsUseCase,
-                        deleteSavedNewsUseCase,
-                        { getSaved() }
-                    )
+                        deleteSavedNewsUseCase
+                    ) { getSaved() }
                 }))
             }
         }

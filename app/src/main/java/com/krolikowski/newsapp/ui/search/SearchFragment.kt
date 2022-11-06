@@ -5,19 +5,18 @@ import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
 import androidx.paging.PagingData
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textfield.TextInputLayout
-import com.krolikowski.domain.entities.NewsEntity
 import com.krolikowski.newsapp.R
 import com.krolikowski.newsapp.base.BaseFragment
 import com.krolikowski.newsapp.databinding.FragmentSearchBinding
@@ -31,9 +30,10 @@ import kotlinx.coroutines.launch
 import timber.log.Timber
 
 @AndroidEntryPoint
-class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewState, SearchViewEvent, SearchViewModel>(
-    FragmentSearchBinding::inflate
-) {
+class SearchFragment :
+    BaseFragment<FragmentSearchBinding, SearchViewState, SearchViewEvent, SearchViewModel>(
+        FragmentSearchBinding::inflate
+    ) {
     override val viewModel: SearchViewModel by viewModels()
 
     private val pagingAdapter = NewsListAdapter(::navigateToWebView)
@@ -101,6 +101,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewState, Sear
     override fun onDestroyView() {
         pagingAdapter.removeLoadStateListener(pagingAdapterLoadStateListener)
         binding.searchEditText.removeTextChangedListener(searchTextWatcher)
+        binding.recyclerView.adapter = null
         super.onDestroyView()
     }
 
@@ -139,7 +140,9 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewState, Sear
     }
 
     private fun navigateToWebView(url: String) {
-        Log.d("DEBUG_", url)
+        val navigateToNewsViewer =
+            SearchFragmentDirections.actionNavigationSearchToNewsViewerFragment(url)
+        findNavController().navigate(navigateToNewsViewer)
     }
 
     private fun handleErrorState(error: Throwable) {
@@ -214,15 +217,18 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewState, Sear
                         setEmptyList()
                     }
                     text.isNotEmpty() -> {
-                        viewModel.onViewEvent(
-                            SearchViewEvent.GetNews(
-                                if (text.length >= MINIMAL_QUERY_LENGTH) {
-                                    changeLoadingState(true)
-                                    setEmptyList()
-                                    text.toString()
-                                } else ""
-                            )
-                        )
+                        when {
+                            (text.length >= MINIMAL_QUERY_LENGTH && text.toString() == currentQuery) -> Unit
+                            text.length >= MINIMAL_QUERY_LENGTH -> {
+                                changeLoadingState(true)
+                                setEmptyList()
+                                viewModel.onViewEvent(
+                                    SearchViewEvent.GetNews(text.toString())
+                                )
+                            }
+
+                            else -> viewModel.onViewEvent(SearchViewEvent.GetNews(""))
+                        }
                     }
                     else -> Unit
                 }

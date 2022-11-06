@@ -1,11 +1,10 @@
 package com.krolikowski.newsapp.ui.saved
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.krolikowski.newsapp.R
 import com.krolikowski.newsapp.base.BaseFragment
 import com.krolikowski.newsapp.databinding.FragmentSavedBinding
@@ -14,6 +13,7 @@ import com.krolikowski.newsapp.utils.extensions.setOnItemClickDebounce
 import com.xwray.groupie.GroupieAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
+
 @AndroidEntryPoint
 class SavedFragment :
     BaseFragment<FragmentSavedBinding, SavedViewState, SavedViewEvent, SavedViewModel>(
@@ -21,7 +21,9 @@ class SavedFragment :
     ) {
     override val viewModel: SavedViewModel by viewModels()
 
-    private val contentAdapter = GroupieAdapter()
+    private val contentAdapter = GroupieAdapter().apply {
+        setHasStableIds(true)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,7 +53,9 @@ class SavedFragment :
     }
 
     private fun navigateToWebView(url: String) {
-        Log.d("DEBUG_", url)
+        val navigateToNewsViewer =
+            SavedFragmentDirections.actionNavigationSavedToNewsViewerFragment(url)
+        findNavController().navigate(navigateToNewsViewer)
     }
 
     private fun setContent(newsList: List<NewsItem>) {

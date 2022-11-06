@@ -7,13 +7,33 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.krolikowski.newsapp.ui.home.HomeFragment"
-        android:label="@string/title_tab_home" />
+        android:label="@string/title_tab_home">
+        <action
+            android:id="@+id/action_navigation_home_to_newsViewerFragment"
+            app:destination="@id/newsViewerFragment" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_search"
         android:name="com.krolikowski.newsapp.ui.search.SearchFragment"
-        android:label="@string/title_tab_search" />
+        android:label="@string/title_tab_search">
+        <action
+            android:id="@+id/action_navigation_search_to_newsViewerFragment"
+            app:destination="@id/newsViewerFragment" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_saved"
         android:name="com.krolikowski.newsapp.ui.saved.SavedFragment"
-        android:label="@string/title_tab_saved" />
+        android:label="@string/title_tab_saved">
+        <action
+            android:id="@+id/action_navigation_saved_to_newsViewerFragment"
+            app:destination="@id/newsViewerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newsViewerFragment"
+        android:name="com.krolikowski.newsapp.ui.webview.NewsViewerFragment"
+        android:label="NewsViewerFragment">
+        <argument
+            android:name="webUrl"
+            app:argType="string" />
+    </fragment>
 </navigation>
