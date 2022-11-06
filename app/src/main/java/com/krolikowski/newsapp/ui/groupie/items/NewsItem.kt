@@ -12,6 +12,7 @@ import com.krolikowski.newsapp.databinding.ItemNewsBinding
 import com.krolikowski.newsapp.utils.extensions.clear
 import com.krolikowski.newsapp.utils.extensions.loadFromUrl
 import com.krolikowski.newsapp.utils.extensions.setFormatDate
+import com.xwray.groupie.Item
 import com.xwray.groupie.viewbinding.BindableItem
 import com.xwray.groupie.viewbinding.GroupieViewHolder
 import kotlinx.coroutines.CoroutineScope
@@ -25,6 +26,7 @@ data class NewsItem(
     val deleteSavedNewsUseCase: DeleteSavedNewsUseCase,
     val updateOnItemDelete: (() -> Unit)? = null
 ) : BindableItem<ItemNewsBinding>() {
+    override fun getId() = news.hashCode().toLong()
 
     override fun getLayout() = R.layout.item_news
 

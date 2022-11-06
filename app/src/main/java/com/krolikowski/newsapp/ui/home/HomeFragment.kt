@@ -5,12 +5,14 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.krolikowski.newsapp.R
 import com.krolikowski.newsapp.base.BaseFragment
 import com.krolikowski.newsapp.databinding.FragmentHomeBinding
 import com.krolikowski.newsapp.ui.groupie.items.NewsItem
 import com.krolikowski.newsapp.ui.groupie.shimmer.ShimmerItem
+import com.krolikowski.newsapp.ui.search.SearchFragmentDirections
 import com.krolikowski.newsapp.utils.extensions.setOnItemClickDebounce
 import com.xwray.groupie.GroupieAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -52,7 +54,9 @@ class HomeFragment: BaseFragment<FragmentHomeBinding, HomeViewState, HomeViewEve
     }
 
     private fun navigateToWebView(url: String) {
-        Log.d("DEBUG_", url)
+        val navigateToNewsViewer =
+            HomeFragmentDirections.actionNavigationHomeToNewsViewerFragment(url)
+        findNavController().navigate(navigateToNewsViewer)
     }
 
     private fun setLoadingState() {
