@@ -99,9 +99,11 @@ class SearchFragment :
     }
 
     override fun onDestroyView() {
+        binding.apply {
+            searchEditText.removeTextChangedListener(searchTextWatcher)
+            recyclerView.adapter = null
+        }
         pagingAdapter.removeLoadStateListener(pagingAdapterLoadStateListener)
-        binding.searchEditText.removeTextChangedListener(searchTextWatcher)
-        binding.recyclerView.adapter = null
         super.onDestroyView()
     }
 
@@ -219,12 +221,18 @@ class SearchFragment :
                     text.isNotEmpty() -> {
                         when {
                             (text.length >= MINIMAL_QUERY_LENGTH && text.toString() == currentQuery) -> Unit
-                            text.length >= MINIMAL_QUERY_LENGTH -> {
+                            (text.length >= MINIMAL_QUERY_LENGTH && currentQuery.length >= 2) -> {
                                 changeLoadingState(true)
                                 setEmptyList()
                                 viewModel.onViewEvent(
                                     SearchViewEvent.GetNews(text.toString())
                                 )
+                            }
+
+                            (text.length > 1 && currentQuery.isEmpty()) -> {
+                                currentQuery = ""
+                                binding.searchEditText.text?.clear()
+                                viewModel.onViewEvent(SearchViewEvent.GetNews(""))
                             }
 
                             else -> viewModel.onViewEvent(SearchViewEvent.GetNews(""))

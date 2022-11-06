@@ -17,7 +17,5 @@ class SavedRepositoryImpl(
         newsDao.deleteNews(news)
     }
 
-    override suspend fun getAllSaved() = newsDao.getSavedNews().map {
-        it.toNewsEntity()
-    }
+    override fun getAllSaved() = newsDao.getSavedNews()
 }

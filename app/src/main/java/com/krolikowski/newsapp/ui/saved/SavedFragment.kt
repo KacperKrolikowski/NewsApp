@@ -65,7 +65,10 @@ class SavedFragment :
 
     private fun setEmptyState() {
         binding.apply {
-            emptyText.text = getString(R.string.no_saved)
+            emptyText.apply {
+                text = getString(R.string.no_saved)
+                isVisible = true
+            }
             contentContainer.isVisible = false
             animationView.apply {
                 isVisible = true

@@ -8,6 +8,7 @@ import com.krolikowski.domain.usecases.SaveNewsUseCase
 import com.krolikowski.newsapp.base.BaseViewModel
 import com.krolikowski.newsapp.ui.groupie.items.NewsItem
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -27,16 +28,20 @@ class SavedViewModel @Inject constructor(
     private fun getSaved() {
         postLoadingState()
         viewModelScope.launch {
-            getSavedNewsUseCase.execute().let {
-                mutableViewState.postValue(SavedViewState.Success(it.map { news ->
-                    NewsItem(
-                        news,
-                        viewModelScope,
-                        checkIsNewsSavedUseCase,
-                        saveNewsUseCase,
-                        deleteSavedNewsUseCase
-                    ) { getSaved() }
-                }))
+            getSavedNewsUseCase.execute().collectLatest { databaseNews ->
+                databaseNews.map {
+                    it.toNewsEntity()
+                }.let { newsEntityList ->
+                    mutableViewState.postValue(SavedViewState.Success(newsEntityList.map { news ->
+                        NewsItem(
+                            news,
+                            viewModelScope,
+                            checkIsNewsSavedUseCase,
+                            saveNewsUseCase,
+                            deleteSavedNewsUseCase
+                        ) { getSaved() }
+                    }))
+                }
             }
         }
     }

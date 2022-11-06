@@ -29,7 +29,6 @@ class SearchViewModel @Inject constructor(
     private val deleteSavedNewsUseCase: DeleteSavedNewsUseCase
 ) : BaseViewModel<SearchViewEvent, SearchViewState>() {
     private var searchJob: Job? = null
-    private var genresJob: Job? = null
 
     override fun onViewEvent(viewEvent: SearchViewEvent) {
         when (viewEvent) {
