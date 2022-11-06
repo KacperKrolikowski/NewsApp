@@ -36,4 +36,8 @@
             android:name="webUrl"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/navigation_settings"
+        android:name="com.krolikowski.newsapp.ui.more.SettingsFragment"
+        android:label="@string/title_tab_settings" />
 </navigation>

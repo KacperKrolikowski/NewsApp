@@ -9,4 +9,7 @@
     <string name="offline_text">Wygląda na to, że nie masz połączenia z internetem</string>
     <string name="no_search_results">Brak wyników wyszukiwania dla tego zapytania</string>
     <string name="no_saved">Wygląda na to, że nie zapisałeś jeszcze żadnych artykułów</string>
+    <string name="app_language">Język aplikacji</string>
+    <string name="news_language">Język artykułów</string>
+    <string name="title_tab_settings">Ustawienia</string>
 </resources>

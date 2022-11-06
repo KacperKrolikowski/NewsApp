@@ -10,4 +10,7 @@
     <string name="offline_text">It looks like you don\'t have an internet connection</string>
     <string name="no_search_results">No search results for this query</string>
     <string name="no_saved">It looks like you haven\'t saved any articles yet</string>
+    <string name="app_language">Application language</string>
+    <string name="news_language">News language</string>
+    <string name="title_tab_settings">Settings</string>
 </resources>
