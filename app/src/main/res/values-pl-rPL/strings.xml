@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NewsApp</string>
+    <string name="title_tab_search">Wyszukaj</string>
+    <string name="title_tab_home">Strona główna</string>
+    <string name="title_tab_saved">Zapisane</string>
+    <string name="generic_error">Coś poszło nie tak</string>
+    <string name="search">Wyszukaj</string>
+    <string name="offline_text">Wygląda na to, że nie masz połączenia z internetem</string>
+    <string name="no_search_results">Brak wyników wyszukiwania dla tego zapytania</string>
+    <string name="no_saved">Wygląda na to, że nie zapisałeś jeszcze żadnych artykułów</string>
+</resources>
