@@ -1,12 +1,8 @@
 package com.krolikowski.domain.database
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.krolikowski.domain.entities.NewsDatabaseEntity
-import com.krolikowski.domain.entities.NewsEntity
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface NewsDao {
@@ -18,7 +14,7 @@ interface NewsDao {
     suspend fun deleteNews(newsDatabaseEntity: NewsDatabaseEntity)
 
     @Query("SELECT * from news")
-    suspend fun getSavedNews(): List<NewsDatabaseEntity>
+    fun getSavedNews(): Flow<List<NewsDatabaseEntity>>
 
     @Query("SELECT * from news WHERE :webUrl = newsUrl")
     suspend fun checkIsSaved(webUrl: String): NewsDatabaseEntity?
