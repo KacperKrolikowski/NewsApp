@@ -6,31 +6,30 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/app_language_textView"
+        android:id="@+id/top_news_country_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="App language"
-        android:layout_marginTop="@dimen/margin_m"
         android:layout_marginStart="@dimen/margin_m"
+        android:layout_marginTop="@dimen/margin_m"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Top news language" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/app_language_layout"
+        android:id="@+id/top_news_country_layout"
         style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_m"
-        android:visibility="gone"
         app:endIconDrawable="@drawable/ic_down_arrow"
         app:endIconTint="@color/blood_red"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/app_language_textView"
-        tools:visibility="visible">
+        app:layout_constraintTop_toBottomOf="@+id/top_news_country_textView">
 
         <AutoCompleteTextView
-            android:id="@+id/app_language_dropdown_text"
+            android:id="@+id/top_news_country_dropdown_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@null"
@@ -39,8 +38,7 @@
             android:paddingTop="@dimen/margin_l"
             android:paddingBottom="@dimen/margin_l"
             android:singleLine="true"
-            android:textSize="@dimen/text_size_l"
-            android:textStyle="bold" />
+            android:textSize="@dimen/text_size_l" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -48,10 +46,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="News language"
+        android:textStyle="bold"
         android:layout_marginTop="@dimen/margin_l"
         android:layout_marginStart="@dimen/margin_m"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/app_language_layout" />
+        app:layout_constraintTop_toBottomOf="@+id/top_news_country_layout" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/news_language_layout"
@@ -59,13 +58,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_m"
-        android:visibility="gone"
         app:endIconDrawable="@drawable/ic_down_arrow"
         app:endIconTint="@color/blood_red"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/news_language_textView"
-        tools:visibility="visible">
+        app:layout_constraintTop_toBottomOf="@+id/news_language_textView">
 
         <AutoCompleteTextView
             android:id="@+id/news_language_dropdown_text"
@@ -77,8 +74,7 @@
             android:paddingTop="@dimen/margin_l"
             android:paddingBottom="@dimen/margin_l"
             android:singleLine="true"
-            android:textSize="@dimen/text_size_l"
-            android:textStyle="bold" />
+            android:textSize="@dimen/text_size_l" />
     </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

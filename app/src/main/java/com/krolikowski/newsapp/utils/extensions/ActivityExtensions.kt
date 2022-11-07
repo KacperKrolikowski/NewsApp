@@ -8,6 +8,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import timber.log.Timber
 
+
 inline fun <reified T : Activity> Activity.navigateTo(
     extras: Bundle = Bundle(),
     finishCurrent: Boolean = true

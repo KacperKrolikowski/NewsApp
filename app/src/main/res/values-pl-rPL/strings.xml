@@ -2,14 +2,26 @@
 <resources>
     <string name="app_name">NewsApp</string>
     <string name="title_tab_search">Wyszukaj</string>
-    <string name="title_tab_home">Strona główna</string>
+    <string name="title_tab_home">Top newsy</string>
     <string name="title_tab_saved">Zapisane</string>
     <string name="generic_error">Coś poszło nie tak</string>
     <string name="search">Wyszukaj</string>
     <string name="offline_text">Wygląda na to, że nie masz połączenia z internetem</string>
     <string name="no_search_results">Brak wyników wyszukiwania dla tego zapytania</string>
-    <string name="no_saved">Wygląda na to, że nie zapisałeś jeszcze żadnych artykułów</string>
-    <string name="app_language">Język aplikacji</string>
-    <string name="news_language">Język artykułów</string>
+    <string name="no_saved">Wygląda na to, że nie zapisałeś jeszcze żadnych newsów</string>
+    <string name="news_language">Język newsów</string>
     <string name="title_tab_settings">Ustawienia</string>
+    <string name="top_news_language">Kraj top newsów</string>
+    <string name="country_poland">Polska</string>
+    <string name="language_poland">Polski</string>
+    <string name="country_usa">Stany Zjednoczone</string>
+    <string name="language_usa">Angielski</string>
+    <string name="country_czech_republic">Republika Czeska</string>
+    <string name="language_czech_republic">Czeski</string>
+    <string name="country_ukraine">Ukraina</string>
+    <string name="language_ukraine">Ukraiński</string>
+    <string name="language_germany">Niemcy</string>
+    <string name="country_germany">Niemiecki</string>
+    <string name="country_france">Francja</string>
+    <string name="language_france">Francuski</string>
 </resources>

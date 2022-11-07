@@ -38,6 +38,6 @@
     </fragment>
     <fragment
         android:id="@+id/navigation_settings"
-        android:name="com.krolikowski.newsapp.ui.more.SettingsFragment"
+        android:name="com.krolikowski.newsapp.ui.settings.SettingsFragment"
         android:label="@string/title_tab_settings" />
 </navigation>
