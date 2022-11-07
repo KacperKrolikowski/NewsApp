@@ -16,12 +16,14 @@ interface NewsAPI {
     @GET("v2/everything")
     suspend fun getNewsByQuery(
         @Query(QUERY_SEARCH) query: String,
+        @Query(QUERY_LANGUAGE) language: String,
         @Query(QUERY_API_KEY) apiKey: String = QUERY_API_KEY_VALUE,
         @Query(QUERY_PAGE_NUMBER) pageNumber: Int
     ): NewsListResponse
 
     companion object {
         private const val QUERY_COUNTRY = "country"
+        private const val QUERY_LANGUAGE = "language"
         private const val QUERY_SEARCH = "q"
         private const val QUERY_API_KEY = "apiKey"
         private const val QUERY_API_KEY_VALUE = "14e1622c28f948fe86a6cbd24243ecc0"

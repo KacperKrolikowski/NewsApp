@@ -11,7 +11,7 @@ class NewsRepositoryImpl(
 ) : NewsRepository {
     override suspend fun getTopNews(): Result<NewsListEntity> {
         val topNewsResult = kotlin.runCatching {
-            api.getTopNews(country = sharedPreferencesRepository.appLanguageCode)
+            api.getTopNews(country = sharedPreferencesRepository.topNewsCountryCode)
         }
         return topNewsResult.mapCatching {
             it.toEntity()
@@ -21,7 +21,8 @@ class NewsRepositoryImpl(
     override suspend fun getNewsByQuery(query: String, pageIndex: Int): NewsListEntity {
         val topNewsResult = api.getNewsByQuery(
             pageNumber = pageIndex,
-            query = query
+            query = query,
+            language = sharedPreferencesRepository.newsLanguageCode
         )
 
         return topNewsResult.toEntity()

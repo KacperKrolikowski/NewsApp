@@ -3,7 +3,6 @@ package com.krolikowski.data.repositories
 import android.content.Context
 import android.content.SharedPreferences
 import com.krolikowski.domain.reposotories.SharedPreferenceRepository
-import java.util.Locale
 
 class SharedPreferenceRepositoryImpl constructor(
     private val context: Context
@@ -16,9 +15,21 @@ class SharedPreferenceRepositoryImpl constructor(
     }
 
     override var appLanguageCode: String
-        get() = getValue(KEY_APP_LANGUAGE_CODE, "us")
+        get() = getValue(KEY_APP_LANGUAGE_CODE, "en")
         set(value) {
             setValue(KEY_APP_LANGUAGE_CODE, value)
+        }
+
+    override var topNewsCountryCode: String
+        get() = getValue(KEY_TOP_NEWS_LANGUAGE_CODE, "pl")
+        set(value) {
+            setValue(KEY_TOP_NEWS_LANGUAGE_CODE, value)
+        }
+
+    override var newsLanguageCode: String
+        get() = getValue(KEY_NEWS_LANGUAGE_CODE, "pl")
+        set(value) {
+            setValue(KEY_NEWS_LANGUAGE_CODE, value)
         }
 
     private inline fun <reified T> getValue(key: String, defaultValue: T): T =
@@ -50,5 +61,7 @@ class SharedPreferenceRepositoryImpl constructor(
     companion object {
         private const val KEY_PREFS_NAME = "key_news_app_prefs"
         private const val KEY_APP_LANGUAGE_CODE = "app_language_code"
+        private const val KEY_NEWS_LANGUAGE_CODE = "news_language_code"
+        private const val KEY_TOP_NEWS_LANGUAGE_CODE = "top_news_language_code"
     }
 }
