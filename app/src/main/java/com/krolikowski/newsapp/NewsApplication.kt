@@ -15,10 +15,10 @@ class NewsApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        //if (BuildConfig.DEBUG) {
+        if (BuildConfig.DEBUG) {
             enableStrictMode()
             Timber.plant(Timber.DebugTree())
-        //}
+        }
         connectivityHelper.init()
     }
 
