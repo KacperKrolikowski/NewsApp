@@ -103,7 +103,9 @@ class SearchFragment :
             searchEditText.removeTextChangedListener(searchTextWatcher)
             recyclerView.adapter = null
         }
+
         pagingAdapter.removeLoadStateListener(pagingAdapterLoadStateListener)
+
         super.onDestroyView()
     }
 
@@ -194,6 +196,7 @@ class SearchFragment :
         setTextColor(Color.BLACK)
         addTextChangedListener(searchTextWatcher)
         hint = getString(R.string.search)
+        setHintTextColor(ColorStateList.valueOf(ContextCompat.getColor(context, R.color.gray)))
     }
 
     private fun View.initFocusControl() {
