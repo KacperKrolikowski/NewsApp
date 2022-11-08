@@ -3,7 +3,6 @@ package com.krolikowski.newsapp
 import android.app.Application
 import android.os.StrictMode
 import com.krolikowski.newsapp.networking.ConnectivityHelper
-import com.squareup.leakcanary.core.BuildConfig
 import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 import javax.inject.Inject
@@ -16,10 +15,10 @@ class NewsApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        if (BuildConfig.DEBUG) {
+        //if (BuildConfig.DEBUG) {
             enableStrictMode()
             Timber.plant(Timber.DebugTree())
-        }
+        //}
         connectivityHelper.init()
     }
 

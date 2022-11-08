@@ -26,7 +26,7 @@ interface NewsAPI {
         private const val QUERY_LANGUAGE = "language"
         private const val QUERY_SEARCH = "q"
         private const val QUERY_API_KEY = "apiKey"
-        private const val QUERY_API_KEY_VALUE = "14e1622c28f948fe86a6cbd24243ecc0"
+        private const val QUERY_API_KEY_VALUE = BuildConfig.API_KEY
         private const val QUERY_PAGE_SIZE = "pageSize"
         private const val QUERY_PAGE_NUMBER = "page"
 
